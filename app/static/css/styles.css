@@ -1,0 +1,337 @@
+:root {
+    --primary-color: #ceb290;
+    --secondary-color: #3498db;
+    --background-color: #f4f6f7;
+    --text-color: #2c3e50;
+    --accent-color: #27ae60;
+    --white: #ffffff;
+    --border-color: #e0e0e0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url('/static/images/charity.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    transition: all 0.3s ease;
+    margin: 0 auto;
+    margin-top: 5vh;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    margin-top: 2rem;
+}
+
+.form-section {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+header h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+nav {
+    display: flex;
+    gap: 1rem;
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+main {
+    flex-grow: 1;
+    padding: 2rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+section {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+h1, h2 {
+    color: var(--primary-color);
+    font-size: 28px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 60px;
+    height: 3px;
+    background-color: var(--secondary-color);
+    transform: translateX(-50%);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form.inline-form {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+label {
+    text-align: left;
+    margin-top: 15px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+button.action-btn {
+    background-color: var(--accent-color);
+    width: auto;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    font-size: 14px;
+}
+
+button.action-btn:hover {
+    background-color: #043217;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+thead {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+td form {
+    margin: 0;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+td select {
+    width: auto;
+    margin: 0;
+    padding: 0.5rem;
+}
+
+td button {
+    width: auto;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    font-size: 14px;
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.flash-messages {
+    margin-bottom: 20px;
+}
+
+.alert {
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.alert-success {
+    background-color: rgba(4, 38, 11, 0.1);
+    color: #28a745;
+    border: 1px solid rgba(40, 167, 69, 0.3);
+}
+
+.alert-danger {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    border: 1px solid rgba(220, 53, 69, 0.3);
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav {
+        margin-top: 1rem;
+    }
+
+    .container {
+        margin: 20px;
+        padding: 20px;
+        width: calc(100% - 40px);
+    }
+
+    form.inline-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    select, button {
+        width: 100%;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    input, select, button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    table {
+        font-size: 0.8em;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+}

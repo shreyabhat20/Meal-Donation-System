@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - MealDonor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <h2>Register</h2>
+        <form action="{{ url_for('auth.register') }}" method="POST" onsubmit="return validateForm();">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Password:</label>
+            <div style="position: relative;">
+                <input type="password" id="password" name="password" required>
+                <span id="togglePassword" style="cursor: pointer; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);" onclick="togglePassword()">👁</span>
+            </div>
+            <div id="error-message" style="color: red;"></div>
+            <label for="role">Role:</label>
+            <select id="role" name="role" required>
+                <option value="" disabled selected>Select your role</option>
+                <option value="host">Wedding Host</option>
+                <option value="charity">Charity Organizer</option>
+            </select>
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="{{ url_for('auth.login') }}">Login here</a></p>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

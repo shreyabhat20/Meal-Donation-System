@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - MealDonor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>MealDonor Dashboard</h1>
+        <nav>
+            <a href="{{ url_for('donations.history') }}">Donation History</a>
+            <a href="{{ url_for('auth.logout') }}">Logout</a>
+        </nav>
+    </header>
+
+    <div class="dashboard-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <div class="form-section">
+            <h2>Register a New Donation</h2>
+            <form action="{{ url_for('dashboard.add_donation') }}" method="POST">
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" placeholder="Enter city name" required>
+                <label for="food_type">Food Item:</label>
+                <input type="text" id="food_type" name="food_type" placeholder="Enter food type" required>
+                <label for="quantity">Quantity (number of servings):</label>
+                <input type="number" id="quantity" name="quantity" placeholder="Enter quantity" required>
+                <label for="expiration_date">Expiration Date:</label>
+                <input type="date" id="expiration_date" name="expiration_date" required>
+                <button type="submit">Add Donation</button>
+            </form>
+        </div>
+
+        <section>
+            <h2>Manage Your Donations</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Food Type</th>
+                        <th>Quantity</th>
+                        <th>Expiration Date</th>
+                        <th>City</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for donation in donations %}
+                    <tr>
+                        <td>{{ donation.food_type }}</td>
+                        <td>{{ donation.quantity }}</td>
+                        <td>{{ donation.expiration_date }}</td>
+                        <td>{{ donation.city }}</td>
+                        <td>{{ donation.status }}</td>
+                        <td>
+                            <form action="{{ url_for('dashboard.update_status', donation_id=donation.id) }}" method="POST">
+                                <select name="status" required>
+                                    <option value="available" {% if donation.status == 'available' %}selected{% endif %}>Available</option>
+                                    <option value="requested" {% if donation.status == 'requested' %}selected{% endif %}>Requested</option>
+                                    <option value="donated" {% if donation.status == 'donated' %}selected{% endif %}>Donated</option>
+                                </select>
+                                <button type="submit" class="action-btn">Update</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 MealDonor Platform</p>
+    </footer>
+</body>
+</html>
